@@ -1,20 +1,20 @@
 # ME-MCP
 
-> Have your agent contact my agent.
+> "Have your agent contact my agent."
 >
 > -- Cool people in movies
 
-A personal MCP Server to let agents discover information about you and contact you.
+A personal MCP (Model Context Protocol) server enabling agents to discover information about you and facilitate direct communication.
 
 ## Overview
 
-A Streamable HTTP MCP Server that deploys via Cloudflare Workers.  It easily runs in a cheap Cloudflare plan.
+ME-MCP is a lightweight Streamable HTTP MCP server designed for deployment via Cloudflare Workers.
 
-Me-MCP provides two tools:
-* Fetch resume for the server owner
-* Contact the server owner
+### Features
+* **Resume Fetching**: Easily share your resume via MCP.
+* **Direct Contact**: Receive direct messages
 
-The contact capability is powered via Discord webhooks since this is a bit easier to setup than setting up an email service like Mailgun, SendGrid, or SES.
+Direct contact is accomplished through Discord webhooks, offering a simpler alternative to email services.
 
 ## Getting started
 
@@ -24,14 +24,16 @@ The contact capability is powered via Discord webhooks since this is a bit easie
 * Copy `.dev.vars.example` to `.dev.vars`.  Update `DISCORD_WEBHOOK_URL` with your Discord webhook URL.
 * Update `public/resources/resume.txt` with a markdown formatted copy of your resume
 
-### Running locally
+### Local Development
+
+Install dependencies and run locally:
 
 ```txt
 npm install
 npm run dev
 ```
 
-### Deploy to Cloudflare
+### Deployment
 
 Set the Discord webhook URL.
 
@@ -47,26 +49,22 @@ npm run deploy
 
 ### Discovery
 
-Hopefully the [`.well-known/mcp`](https://github.com/orgs/modelcontextprotocol/discussions/84) discussion leads to a solution.  For now, share your URL directly.  And possibly provide some instructions (see next section) since it is not easy to use remote MCP servers yet.
+Currently, `.well-known/mcp` discovery is under active discussion ([see here](https://github.com/orgs/modelcontextprotocol/discussions/84)). For now, share your URL directl and provide instructions for users to connect.
 
-## Using your Me-MCP (Or instructing someone else in the usage)
+## Using Your Me-MCP
 
-This MCP server uses the latest version of the MCP spec and uses the [Streamable HTTP transport](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http).  Not all MCP Clients have been updated to work with this new spec.  As of May 2025, the easiest way to use this server is probably [Claude Remote MCP](https://support.anthropic.com/en/articles/11175166-about-custom-integrations-using-remote-mcp) using a paid Claude plan.
+This MCP server adheres to the latest MCP spec using [Streamable HTTP transport](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http). As of May 2025, the recommended method to connect is via [Claude Remote MCP](https://support.anthropic.com/en/articles/11175166-about-custom-integrations-using-remote-mcp) with a paid Claude subscription.
 
-You can also use [mcp-remoate](https://github.com/geelen/mcp-remote) client to proxy a local server to your remote server.  This will work in most popular MCP clients (Claude Desktop, Cursor, etc).  Use this config format:
-
-```
-{
-  "mcpServers": {
-    "remote-example": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://me-mcp.example.com/mcp"
-      ]
+Alternatively, use the [mcp-remote](https://github.com/geelen/mcp-remote) client for proxying, compatible with most MCP clients (Claude Desktop, Cursor, etc.). Configure it as follows:
+    
+    
+    {
+      "mcpServers": {
+        "remote-example": {
+          "command": "npx",
+          "args": ["mcp-remote", "https://me-mcp.example.com/mcp"]
+        }
+      }
     }
-  }
-}
-```
 
-Once added, the user/agent can ask questions about you and send messages to your Discord server.
+After configuration, users or agents can query your information and send messages directly to your Discord.
