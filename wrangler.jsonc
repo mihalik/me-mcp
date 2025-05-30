@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "me-mcp",
+  "main": "./src/index.ts",
+  "compatibility_date": "2025-04-02",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "MCP_OWNER_NAME": "Dustin Mihalik",
+    // "MCP_OWNER_NAME": "Your Name",
+  }
+}
