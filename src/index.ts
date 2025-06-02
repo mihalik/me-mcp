@@ -87,6 +87,7 @@ app.delete("/mcp", async (c) => {
   );
 });
 
+// Static html server with instructions for using the server
 app.get("/", (c) => {
   return renderReadme(c, process.env.MCP_OWNER_NAME || "Owner");
 });

@@ -1,5 +1,10 @@
 import { html } from 'hono/html'
 
+/**
+ * This is a really simple HTML page using pico.css to provide some basic styling and
+ * and uses document.write to dynamically insert the MCP URL.  This is just fine for
+ * a simple page like this.
+ */
 export default function renderReadme(c, name: string) {
     return c.html(
         html`
@@ -30,15 +35,15 @@ export default function renderReadme(c, name: string) {
             </pre>
             This server provides two tools:
             <ul>
-                <li><strong>Get Resume</strong>: Fetch a resume or work history for ${name}.</li>
-                <li><strong>Contact Owner</strong>: Send a message to ${name}.</li>
+                <li><strong>Get Resume</strong>: Fetch a resume or work history.</li>
+                <li><strong>Contact Owner</strong>: Send a message (requires your name and email address).</li>
             </ul>
         </p>
 
         <p>
             This requires an MCP client that supports remote MCP (Streamable HTTP).  For clients that do not support remote MCP, you can use <a href="https://github.com/geelen/mcp-remote">mcp-remote</a>.  Here's an example config:
             <pre>
-            
+
                 {
                     "mcpServers": {
                         "${name} MCP": {
