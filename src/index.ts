@@ -3,6 +3,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { toFetchResponse, toReqRes } from "fetch-to-node";
 
+import renderReadme from "./readme";
 import registerTools from "./tools";
 import registerResources from "./resources";
 
@@ -84,6 +85,10 @@ app.delete("/mcp", async (c) => {
     },
     { status: 405 }
   );
+});
+
+app.get("/", (c) => {
+  return renderReadme(c, process.env.MCP_OWNER_NAME || "Owner");
 });
 
 export default app;
