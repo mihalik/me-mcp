@@ -49,7 +49,7 @@ npm run deploy
 
 ### Discovery
 
-Currently, `.well-known/mcp` discovery is under active discussion ([see here](https://github.com/orgs/modelcontextprotocol/discussions/84)). For now, share your URL directl and provide instructions for users to connect.
+Currently, `.well-known/mcp` discovery is under active discussion ([see here](https://github.com/orgs/modelcontextprotocol/discussions/84)). For now, share your URL directly and provide instructions for users to connect.
 
 ## Using Your Me-MCP
 
