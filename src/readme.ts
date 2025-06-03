@@ -1,9 +1,9 @@
 import { html } from 'hono/html'
 
 /**
- * This is a really simple HTML page using pico.css to provide some basic styling and
- * and uses document.write to dynamically insert the MCP URL.  This is just fine for
- * a simple page like this.
+ * This is a really simple HTML page using pico.css to provide some basic styling and uses
+ * document.write to dynamically insert the MCP URL.  This is just fine for a simple page
+ * like this.
  */
 export default function renderReadme(c, name: string) {
     return c.html(
